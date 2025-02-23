@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "68e249ba-ed20-4659-83b4-a81bc75178b5",
+		"name": "monkCommerceZumar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26323785",
+		"_collection_link": "https://iquasar-iqss.postman.co/workspace/Team-Workspace~ff435be0-6a9d-4a3c-8431-71db9eddb1f1/collection/26323785-68e249ba-ed20-4659-83b4-a81bc75178b5?action=share&source=collection_link&creator=26323785"
+	},
+	"item": [
+		{
+			"name": "Create A Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apply Coupon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"items\": [\n    {\n      \"id\": 6,\n      \"quantity\": 2,\n      \"price\": 25\n    },\n    {\n      \"id\": 5,\n      \"quantity\": 2,\n      \"price\": 30\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/apply-coupon/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"apply-coupon",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Applicable Coupons",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Thunder Client (https://www.thunderclient.com)",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"item\": [{\"id\": 5, \"quantity\": 2, \"price\": 120}, {\"id\": 6, \"quantity\": 1, \"price\": 10}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/applicable-coupons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"applicable-coupons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create A Coupon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"product-wise\",\n  \"repition_limit\": 2,\n  \"details\": {\n    \"product_id\": 5,\n    \"discount\": 10\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/coupons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coupons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"quantity\": 2,\n  \"price\": 90\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Coupon By Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"bxgy\",\n  \"repition_limit\": 3,\n  \"details\": {\n    \"buy_products\": [{\"id\": 4, \"quantity\": 3}, {\"id\": 1, \"quantity\": 4}],\n    \"get_products\": [{\"id\": 1, \"quantity\": 1}, {\"id\":2, \"quantity\": 2}]\n  }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/coupons/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coupons",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Coupon By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/coupons/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coupons",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Coupon By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/coupons/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coupons",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Coupons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/coupons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coupons"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
