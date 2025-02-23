@@ -48,7 +48,30 @@ func createCoupon(h handler, w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// NOTE: Create coupon in the DB
+	// NOTE: Check the type and see if the user is sending the correct data for a particular couopn
+	if data.Type == models.CartWise {
+		// NOTE: Check if Discount and Threshold are provided
+		if data.Details.Discount == 0 || data.Details.Threshold == 0 {
+			http.Error(w, "Please provide Discount and Threshold", http.StatusBadRequest)
+			return
+		}
+	}
+	if data.Type == models.ProductWise {
+		// NOTE: Check if ProductID and Discount are provided
+		if len(data.Details.BuyProducts) == 0 || data.Details.Discount == 0 {
+			http.Error(w, "Please provide ProductID and Discount", http.StatusBadRequest)
+			return
+		}
+	}
+	if data.Type == models.Bxgy {
+		// NOTE: Check if BuyProducts and GetProducts are provided
+		if len(data.Details.BuyProducts) == 0 || len(data.Details.GetProducts) == 0 {
+			http.Error(w, "Please provide BuyProducts and GetProducts", http.StatusBadRequest)
+			return
+		}
+	}
+
+	// NOTE: if the data is correct Create the coupon in DB
 	if result := h.DB.Create(&data); result.Error != nil {
 		http.Error(w, "Could not create the coupon", http.StatusInternalServerError)
 		return
