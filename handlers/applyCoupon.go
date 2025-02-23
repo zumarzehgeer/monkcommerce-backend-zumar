@@ -77,6 +77,7 @@ func applyCouponById(h handler, w http.ResponseWriter, r *http.Request, id int) 
 	cart.TotalDiscount = totalDiscount
 	cart.FinalPrice = totalPrice - totalDiscount
 
+	// TODO: once the coupon is applied update the coupons repetition limit
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(cart)
 }
