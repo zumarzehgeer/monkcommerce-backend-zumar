@@ -11,14 +11,6 @@ import (
 	"zumarzehgeer.com/go/server/models"
 )
 
-// const (
-// 	host     = "ep-orange-grass-a8mmql0l-pooler.eastus2.azure.neon.tech"
-// 	port     = 5432
-// 	user     = "neondb_owner"
-// 	password = "npg_k8KbwqWM6dct"
-// 	dbname   = "monkcommerce-backend"
-// )
-
 func Init() *gorm.DB {
 
 	err := godotenv.Load()
